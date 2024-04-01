@@ -35,8 +35,10 @@ def getValue():
 porta = int(input('digite a porta: '))
 arduino = conectarArduino(porta=porta)
 
-input('ARDUINO CONECTADO, APERTE ENTER PARA INICIAR A LEITURA E ENTER PARA PARAR')
-To = time()
+print('ARDUINO CONECTADO')
+input('APERTE ENTER PARA INICIAR A LEITURA E ENTER PARA PARAR')
+
+To   = time()
 data = []
 
 while True:
@@ -49,5 +51,5 @@ while True:
     if keyboard.is_pressed('enter') or len(data) > 1000000:
         break
 
-df = pd.DataFrame(data, columns=['Tensao', 'Tempo'])
+df = pd.DataFrame(data, columns=['time', 'analog'])
 df.to_csv('file.csv')
